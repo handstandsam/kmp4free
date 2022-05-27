@@ -8,8 +8,7 @@ import org.gradle.api.Project
 /**
  * Kotlin Multiplatform Convention Plugin that is swappable with the JVM Plugin
  */
-class Kmp4FreePlugin : Plugin<Project> {
-
+public class Kmp4FreePlugin : Plugin<Project> {
     override fun apply(target: Project) {
         val kmp4FreeMagic = Kmp4FreeMagic(target)
         if (Kmp4FreePropertyValues(target).isMultiplatformEnabled) {

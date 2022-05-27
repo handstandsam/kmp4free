@@ -1,3 +1,15 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        google()
+        gradlePluginPortal()
+    }
+    dependencies {
+        classpath("com.handstandsam.kmp4free:kmp4free:0.1.0-SNAPSHOT")
+        classpath(libs.android.gradle.plugin)
+    }
+}
+
 plugins {
     alias(libs.plugins.dependency.guard)
 }
@@ -12,7 +24,16 @@ allprojects {
 }
 
 dependencyGuard {
-    configuration("classpath")
+    configuration("classpath") {
+        baselineMap = {
+            def str = it
+            if (str.startsWith("com.handstandsam.kmp4free:kmp4free")) {
+                null
+            } else {
+                str
+            }
+        }
+    }
 }
 
 // Allow Gradle Build Scans
@@ -20,5 +41,6 @@ gradleEnterprise {
     buildScan {
         termsOfServiceUrl = "https://gradle.com/terms-of-service"
         termsOfServiceAgree = "yes"
+        uploadInBackground = false // With this enabled, we don't get the 2nd buildscan in Github Actions
     }
 }

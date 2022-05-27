@@ -6,7 +6,7 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 /**
  * Allows us to use the SourceSet Structure of a JVM Project in a Multiplatform Project
  */
-class Kmp4FreeMagic(private val target: Project) {
+internal class Kmp4FreeMagic(private val target: Project) {
 
     private val gradleProperties = Kmp4FreePropertyValues(target)
 

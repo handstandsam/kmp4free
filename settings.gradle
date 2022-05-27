@@ -13,12 +13,20 @@ plugins {
 
 rootProject.name = "kmp4free-root"
 
-include ':sample:app'
-include ':sample:module1'
-include ':sample:module2'
-
-includeBuild('kmp4free') {
-    dependencySubstitution {
-        substitute module('com.handstandsam:kmp4free') using project(':')
+String perftestTarget = ext.find("perftest")
+if (perftestTarget!=null && !perftestTarget.isEmpty()) {
+    include perftestTarget
+} else {
+    include ':samples:android_app'
+    include ':samples:android_lib'
+    include ':samples:jvm'
+    include ':samples:jvm_kmp4free'
+    include ':samples:multiplatform'
+    include ':samples:multiplatform_kmp4free'
+    // Use Source
+    includeBuild('kmp4free') {
+        dependencySubstitution {
+            substitute module('com.handstandsam.kmp4free:kmp4free') using project(':')
+        }
     }
 }

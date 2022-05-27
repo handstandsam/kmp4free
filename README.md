@@ -1,17 +1,37 @@
-# 💸 kmp4free
-Allows you to toggle between Kotlin JVM Plugin -> Kotlin Multiplatform with a Gradle Property `kmp4free.multiplatform=true`.
+# 🆓 kmp4free
+[![LICENSE](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/handstandsam/kmp4free/blob/main/LICENSE)
+[![Latest Snapshot](https://img.shields.io/badge/dynamic/xml?url=https://s01.oss.sonatype.org/content/repositories/snapshots/com/handstandsam/kmp4free/kmp4free/maven-metadata.xml&label=Latest%20Snapshot&color=blue&query=.//versioning/latest)](https://s01.oss.sonatype.org/content/repositories/snapshots/com/handstandsam/com.handstandsam.kmp4free.gradle.plugin/)
+[![CI](https://github.com/handstandsam/kmp4free/workflows/CI/badge.svg)](https://github.com/handstandsam/kmp4free/actions?query=branch%3Amain)
+
+Allows you to toggle between Kotlin JVM Plugin -> Kotlin Multiplatform with a Gradle Property `kmp4free=true`.
 
 This Gradle Plugin was built to support gradual adoption of Kotlin Multiplatform.  It's called `kmp4free` because you are able to take a normal Kotlin JVM module, and with a single line change, enable or disable the Kotlin Multiplatform Plugin.
 
 There is always a risk of adding something new, especially with a large project. The introduction of a technology that is not at a stable version yet can block the adoption of a new technology.  The goal of this plugin is to reduce risk to a single line change.
 
 ## Plugin Installation
-This Gradle plugin is not being distributed as a binary at this point, so you will need to move the code into your own repository.
+Add the Snapshot Repo in your project's `settings.gradle.kts`
+```kotlin
+pluginManagement {
+    repositories {
+        // ...
+        maven { url = "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
+    }
+}
+```
 
+Add the Plugin on your project's `build.gradle.kts`
+```kotlin
+plugins {
+    id("com.handstandsam.kmp4free") version "${latest_version}"
+}
+```
+
+## Usage
 Just replace `kotlin("jvm")` with `id("com.handstandsam.kmp4free")` in the `plugins` block of your module's `build.gradle.kts` file.
 
-## Multiplatform Enabled (Uses Kotlin Multiplatform Plugin)
-You can set `kmp4free.multiplatform=true` in your `gradle.properties` or send it in as a command-line parameter to gradle with `-Pkmp4free.multiplatform=true`.
+### Enabling Multiplatform
+You can set `kmp4free=true` in your `gradle.properties` or send it in as a command-line parameter to gradle with `-Pkmp4free=true`.
 
 This enables property the Kotlin Multiplatform Plugin, along with the additional changes required to support seamless switching between the Kotlin JVM Plugin.
 
@@ -33,7 +53,8 @@ When tests are already written with JVM Libraries like JUnit and Google's Truth 
 * `:module:test` ➡️ `:module:jvmTest`
 
 
-## Multiplatform Disabled (Uses Kotlin JVM Plugin)
+## Disabling Multiplatform
+This uses the Kotlin JVM Plugin, and bypasses Kotlin Multiplatform entirely.
 
 #### SourceSet Mapping
 * `src/commonMain` ➡️ `src/main`
@@ -52,9 +73,12 @@ When tests are already written with JVM Libraries like JUnit and Google's Truth 
 
 You can set the following properties in your `gradle.properties`
 
-
 ## FAQ
-**What Configurations are Mapped?**
+
+#### Why do I need to use `maybeCreate`?
+You may typically see source sets defined like `val commonMain by getting`.  Because with `kmp4free` we toggle the multiplatform plugin on/off, that Source Set will be sometimes be already there, and other times may not be. Therefore we use `maybeCreate("commonMain")` to avoid the error.
+
+#### What Configurations are Mapped?
 * api
 * implementation
 * compileOnly
@@ -64,10 +88,13 @@ You can set the following properties in your `gradle.properties`
 * compileOnlyDependenciesMetadata
 * runtimeOnlyDependenciesMetadata
 
-**Can I use `kmp4free` on an Android Library?**
+#### Can I use `kmp4free` on an Android Library?
 
 No. `kmp4free` is set up to work for Kotlin JVM Projects.  However, a lot of code in Android Libraries are probably not Android Specific, so you can extract that into another module, or if possible, you can change the module from an Android Library to a Kotlin JVM project.
 
 A Kotlin JVM Module means you cannot have resources, an `AndroidManifest.xml` and not use Android APIs.  You can always create your own abstractions to bridge between different modules.
 
 Many projects already have Kotlin JVM projects, while not requiring the use of the Kotlin Multiplatform Plugin.
+
+#### How do I configure my own iOS and JS Targets?
+You'd have to fork the plugin until #2 is implemented.  I'm thinking this would be a lambda in the plugin configuration block for each target.

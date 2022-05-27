@@ -6,11 +6,11 @@ dependencyResolutionManagement {
     }
 }
 
-pluginManagement {
-    repositories {
-        mavenCentral()
-        google()
-        gradlePluginPortal()
-        maven { setUrl("https://s01.oss.sonatype.org/content/repositories/snapshots/") }
-    }
-}
+// pluginManagement {
+//     repositories {
+//         mavenCentral()
+//         google()
+//         gradlePluginPortal()
+//         maven { setUrl("https://s01.oss.sonatype.org/content/repositories/snapshots/") }
+//     }
+// }

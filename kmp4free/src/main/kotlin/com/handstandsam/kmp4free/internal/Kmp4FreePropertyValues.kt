@@ -22,7 +22,7 @@ internal class Kmp4FreePropertyValues(private val project: Project) {
         }
 
     companion object {
-        const val GRADLE_PROPERTY_MULTIPLATFORM = "kmp4free.multiplatform"
+        const val GRADLE_PROPERTY_MULTIPLATFORM = "kmp4free"
         const val GRADLE_PROPERTY_JS = "kmp4free.js"
         const val GRADLE_PROPERTY_IOS = "kmp4free.ios"
     }
