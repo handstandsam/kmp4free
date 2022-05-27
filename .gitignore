@@ -22,3 +22,6 @@ build
 
 # local.properties
 local.properties
+
+# Kotlin JS
+kotlin-js-store/yarn.lock

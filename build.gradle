@@ -1,3 +1,14 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        google()
+        gradlePluginPortal()
+    }
+    dependencies {
+        classpath("com.handstandsam.kmp4free:kmp4free:0.1.0-SNAPSHOT")
+    }
+}
+
 plugins {
     alias(libs.plugins.dependency.guard)
 }
@@ -12,7 +23,16 @@ allprojects {
 }
 
 dependencyGuard {
-    configuration("classpath")
+    configuration("classpath") {
+        baselineMap = {
+            def str = it
+            if (str.startsWith("com.handstandsam.kmp4free:kmp4free")) {
+                "com.handstandsam:kmp4free:kmp4free"
+            } else {
+                str
+            }
+        }
+    }
 }
 
 // Allow Gradle Build Scans

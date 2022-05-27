@@ -1,4 +1,4 @@
-# 💸 kmp4free
+# 🪄 kmp4free
 Allows you to toggle between Kotlin JVM Plugin -> Kotlin Multiplatform with a Gradle Property `kmp4free.multiplatform=true`.
 
 This Gradle Plugin was built to support gradual adoption of Kotlin Multiplatform.  It's called `kmp4free` because you are able to take a normal Kotlin JVM module, and with a single line change, enable or disable the Kotlin Multiplatform Plugin.
