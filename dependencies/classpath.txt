@@ -1,0 +1,2 @@
+com.dropbox.dependency-guard:com.dropbox.dependency-guard.gradle.plugin:0.3.1-SNAPSHOT
+com.dropbox.dependency-guard:dependency-guard:0.3.1-SNAPSHOT

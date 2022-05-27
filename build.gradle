@@ -1,0 +1,24 @@
+plugins {
+    alias(libs.plugins.dependency.guard)
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+        maven { url = "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
+    }
+}
+
+dependencyGuard {
+    configuration("classpath")
+}
+
+// Allow Gradle Build Scans
+gradleEnterprise {
+    buildScan {
+        termsOfServiceUrl = "https://gradle.com/terms-of-service"
+        termsOfServiceAgree = "yes"
+    }
+}
