@@ -19,8 +19,8 @@ include ':samples:jvm_kmp4free'
 include ':samples:multiplatform'
 include ':samples:multiplatform_kmp4free'
 
-includeBuild('kmp4free') {
-    dependencySubstitution {
-        substitute module('com.handstandsam.kmp4free:kmp4free') using project(':')
-    }
-}
+//includeBuild('kmp4free') {
+//    dependencySubstitution {
+//        substitute module('com.handstandsam.kmp4free:kmp4free') using project(':')
+//    }
+//}
