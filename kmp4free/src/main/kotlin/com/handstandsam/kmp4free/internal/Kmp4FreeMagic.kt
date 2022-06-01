@@ -8,30 +8,12 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
  */
 internal class Kmp4FreeMagic(private val target: Project) {
 
-    private val gradleProperties = Kmp4FreePropertyValues(target)
-
     fun enableKotlinMultiplatform() {
         val multiplatformExtension =
             target.extensions.getByType(KotlinMultiplatformExtension::class.java)
         multiplatformExtension.apply {
             // Always enable JVM
-            jvm {
-                withJava()
-            }
-            if (gradleProperties.isIosEnabled) {
-                println("Enabling iOS Multiplatform Target for ${target.path}")
-                multiplatformExtension.apply {
-//                    iosX64()
-//                    iosArm64()
-                    iosSimulatorArm64()
-                }
-            }
-            if (gradleProperties.isJsEnabled) {
-                println("Enabling JavaScript Multiplatform Target for ${target.path}")
-                multiplatformExtension.js(IR) {
-                    browser()
-                }
-            }
+            jvm()
         }
 
         // Extend Configurations and SourceSets
