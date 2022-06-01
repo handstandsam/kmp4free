@@ -1,6 +1,6 @@
 package kmp4free.samples.android.lib
 
-import java.util.*
+import java.util.Date
 
 object AndroidLib {
 
