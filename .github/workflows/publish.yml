@@ -86,13 +86,13 @@ jobs:
           java-version: 11
 
       - name: Performance Tests - Warm Up
-        run: ./gradlew check -Pkmp4free=false -Pkmp4free.ios=false -Pkmp4free.js=false--rerun-tasks --stacktrace --scan
+        run: ./gradlew check -Pkmp4free=false -Pios=false -Pjs=false--rerun-tasks --stacktrace --scan
 
       - name: Performance Tests - jvm kmp4free disabled
-        run: ./gradlew :samples:jvm_kmp4free:assemble -Pkmp4free=false -Pkmp4free.ios=false -Pkmp4free.js=false -Pperftest=:samples:jvm_kmp4free --rerun-tasks --stacktrace --scan
+        run: ./gradlew :samples:jvm_kmp4free:assemble -Pkmp4free=false -Pios=false -Pjs=false -Pperftest=:samples:jvm_kmp4free --rerun-tasks --stacktrace --scan
 
       - name: Performance Tests - multiplatform kmp4free disabled
-        run: ./gradlew :samples:multiplatform_kmp4free:assemble -Pkmp4free=false -Pkmp4free.ios=false -Pkmp4free.js=false -Pperftest=:samples:multiplatform_kmp4free --stacktrace --scan
+        run: ./gradlew :samples:multiplatform_kmp4free:assemble -Pkmp4free=false -Pios=false -Pjs=false -Pperftest=:samples:multiplatform_kmp4free --stacktrace --scan
 
   perf-kmp4free-enabled:
     runs-on: ubuntu-latest
@@ -110,13 +110,13 @@ jobs:
           java-version: 11
 
       - name: Performance Tests - Warm Up
-        run: ./gradlew check -Pkmp4free=true -Pkmp4free.ios=false -Pkmp4free.js=false--rerun-tasks --stacktrace --scan
+        run: ./gradlew check -Pkmp4free=true -Pios=false -Pjs=false--rerun-tasks --stacktrace --scan
 
       - name: Performance Tests - jvm kmp4free enabled
-        run: ./gradlew :samples:jvm_kmp4free:assemble -Pkmp4free=true -Pkmp4free.ios=false -Pkmp4free.js=false -Pperftest=:samples:jvm_kmp4free --rerun-tasks --stacktrace --scan
+        run: ./gradlew :samples:jvm_kmp4free:assemble -Pkmp4free=true -Pios=false -Pjs=false -Pperftest=:samples:jvm_kmp4free --rerun-tasks --stacktrace --scan
 
       - name: Performance Tests - multiplatform kmp4free enabled
-        run: ./gradlew :samples:multiplatform_kmp4free:assemble -Pkmp4free=true -Pkmp4free.ios=false -Pkmp4free.js=false -Pperftest=:samples:multiplatform_kmp4free --rerun-tasks --stacktrace --scan
+        run: ./gradlew :samples:multiplatform_kmp4free:assemble -Pkmp4free=true -Pios=false -Pjs=false -Pperftest=:samples:multiplatform_kmp4free --rerun-tasks --stacktrace --scan
 
 
   publish:
