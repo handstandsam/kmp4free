@@ -11,11 +11,16 @@ dependencies {
 project.extensions.findByType(
     org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension::class.java
 )?.apply {
-    listOf(
-        iosSimulatorArm64()
-    ).forEach { nativeTarget ->
-        nativeTarget.binaries.framework {
-            baseName = "jvm_kmp4free"
+    if (project.findProperty("ios") == "true") {
+        iosSimulatorArm64 {
+            binaries.framework {
+                baseName = project.name
+            }
+        }
+    }
+    if (project.findProperty("js") == "true") {
+        js(IR) {
+            browser()
         }
     }
 }
