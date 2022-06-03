@@ -10,20 +10,20 @@ This Gradle Plugin was built to support gradual adoption of Kotlin Multiplatform
 There is always a risk of adding something new, especially with a large project. The introduction of a technology that is not at a stable version yet can block the adoption of a new technology.  The goal of this plugin is to reduce risk to a single line change.
 
 ## Plugin Installation
-Add the Snapshot Repo in your project's `settings.gradle.kts`
+Add the Plugin on your project's `build.gradle.kts`
+```kotlin
+plugins {
+    id("com.handstandsam.kmp4free") version "${latest_version}"
+}
+```
+
+If you want to use a snapshot version, add the Snapshot Repo in your project's `settings.gradle.kts`
 ```kotlin
 pluginManagement {
     repositories {
         // ...
         maven { url = "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
     }
-}
-```
-
-Add the Plugin on your project's `build.gradle.kts`
-```kotlin
-plugins {
-    id("com.handstandsam.kmp4free") version "${latest_version}"
 }
 ```
 
