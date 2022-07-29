@@ -1,5 +1,6 @@
 # 🆓 kmp4free
 [![LICENSE](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/handstandsam/kmp4free/blob/main/LICENSE)
+[![Latest Stable](https://img.shields.io/badge/dynamic/xml?url=https://repo1.maven.org/maven2/com/handstandsam/kmp4free/kmp4free/maven-metadata.xml&label=Latest%20Stable&color=green&query=.//versioning/latest)](https://repo1.maven.org/maven2/com/handstandsam/kmp4free/kmp4free)
 [![Latest Snapshot](https://img.shields.io/badge/dynamic/xml?url=https://s01.oss.sonatype.org/content/repositories/snapshots/com/handstandsam/kmp4free/kmp4free/maven-metadata.xml&label=Latest%20Snapshot&color=blue&query=.//versioning/latest)](https://s01.oss.sonatype.org/content/repositories/snapshots/com/handstandsam/com.handstandsam.kmp4free.gradle.plugin/)
 [![CI](https://github.com/handstandsam/kmp4free/workflows/CI/badge.svg)](https://github.com/handstandsam/kmp4free/actions?query=branch%3Amain)
 
