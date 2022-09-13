@@ -34,6 +34,7 @@ internal class Kmp4FreeSourceSetMagic(
             listOf(
                 "src/$extendsFromSourceSetName/java",
                 "src/$extendsFromSourceSetName/kotlin",
+                "src/$extendsFromSourceSetName/resources",
             ).forEach {
                 kotlin.srcDir(it)
                 logger.info("Added $it as a srcDir for $sourceSetName")
