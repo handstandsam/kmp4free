@@ -5,7 +5,7 @@ buildscript {
         gradlePluginPortal()
     }
     dependencies {
-        classpath("com.handstandsam.kmp4free:kmp4free:0.1.0-SNAPSHOT")
+        classpath("com.handstandsam.kmp4free:kmp4free:0.1.1")
         classpath(libs.android.gradle.plugin)
     }
 }
