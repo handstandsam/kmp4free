@@ -10,17 +10,18 @@ import org.gradle.api.Project
  */
 public class Kmp4FreePlugin : Plugin<Project> {
     override fun apply(target: Project) {
+        val logger = target.logger
         val isMultiplatformEnabled = Kmp4FreePropertyValues(target).isMultiplatformEnabled
 
         val kmp4FreeMagic = Kmp4FreeMagic(target)
         if (isMultiplatformEnabled) {
             // Use Kotlin Multiplatform Plugin
-            println("Applying Plugin org.jetbrains.kotlin.multiplatform to ${target.path}")
+            logger.info("Applying Plugin org.jetbrains.kotlin.multiplatform to ${target.path}")
             target.plugins.apply("org.jetbrains.kotlin.multiplatform")
             kmp4FreeMagic.enableKotlinMultiplatform()
         } else {
             // Use Kotlin JVM Plugin
-            println("Applying Plugin org.jetbrains.kotlin.jvm to ${target.path}")
+            logger.info("Applying Plugin org.jetbrains.kotlin.jvm to ${target.path}")
             target.plugins.apply("org.jetbrains.kotlin.jvm")
             kmp4FreeMagic.enableKotlinJvm()
         }
