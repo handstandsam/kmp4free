@@ -3,6 +3,7 @@ package com.handstandsam.kmp4free.internal
 import org.gradle.api.NamedDomainObjectContainer
 import org.gradle.api.Project
 import org.gradle.api.artifacts.ConfigurationContainer
+import org.gradle.api.plugins.JavaPluginExtension
 import org.gradle.configurationcache.extensions.capitalized
 import org.jetbrains.kotlin.gradle.dsl.KotlinProjectExtension
 import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSet
@@ -19,6 +20,9 @@ internal class Kmp4FreeSourceSetMagic(
 
     private val kotlinProjectExtension: KotlinProjectExtension =
         target.extensions.getByType(KotlinProjectExtension::class.java)
+
+    private val javaPluginExtension: JavaPluginExtension =
+        target.extensions.getByType(JavaPluginExtension::class.java)
 
     private val sourceSets: NamedDomainObjectContainer<KotlinSourceSet> =
         kotlinProjectExtension.sourceSets
@@ -37,6 +41,9 @@ internal class Kmp4FreeSourceSetMagic(
             ).forEach {
                 kotlin.srcDir(it)
                 logger.info("Added $it as a srcDir for $sourceSetName")
+            }
+            javaPluginExtension.sourceSets.forEach {
+                it.resources.srcDir("src/$extendsFromSourceSetName/resources")
             }
             logger.info("--------")
 
