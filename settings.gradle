@@ -23,10 +23,11 @@ if (perftestTarget!=null && !perftestTarget.isEmpty()) {
     include ':samples:jvm_kmp4free'
     include ':samples:multiplatform'
     include ':samples:multiplatform_kmp4free'
-    // Use Source
-    includeBuild('kmp4free') {
-        dependencySubstitution {
-            substitute module('com.handstandsam.kmp4free:kmp4free') using project(':')
-        }
+}
+
+// Use Source
+includeBuild('kmp4free') {
+    dependencySubstitution {
+        substitute module('com.handstandsam.kmp4free:kmp4free') using project(':')
     }
 }
